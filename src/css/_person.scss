@@ -1,0 +1,122 @@
+/** @format */
+
+.person-container {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #323232 0%, #3f3f3f 40%, #1c1c1c 150%),
+    linear-gradient(
+      to top,
+      rgba(255, 255, 255, 0.4) 0%,
+      rgba(0, 0, 0, 0.25) 200%
+    );
+  background-blend-mode: multiply;
+}
+.person-contents {
+  padding: 3rem;
+}
+.person-details {
+  width: 100%;
+  height: 18rem;
+
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(0, 0, 0);
+  .person-img {
+    width: 200px;
+    height: 200px;
+    box-shadow: 0px 0px 40px rgba(255, 255, 255, 0.219);
+    margin-right: 7rem;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  color: #ffffff;
+  font-family: "Lato", sans-serif;
+  h2 {
+    font-size: 1.5rem;
+    letter-spacing: 1.5px;
+    margin: 0.5rem 0;
+    text-transform: uppercase;
+  }
+  p {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+}
+.person-movies {
+  margin-top: 5rem;
+
+  min-height: 50vh;
+  display: flex;
+
+  overflow-x: visible;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+}
+.person-movies-box {
+  color: aliceblue;
+  position: relative;
+  margin: 0.6rem;
+  transition: all 0.2s linear;
+  width: 280px;
+  height: 380px;
+  padding-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  .person-movies-img {
+    width: 220px;
+    height: 300px;
+    transition: all 0.5s ease-in-out;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  &:hover {
+    transform: scale(1.05);
+  }
+  .movies-person-details {
+    text-align: center;
+    color: #fafafa;
+    font-family: "Lato", sans-serif;
+    h2 {
+      font-size: 1.2rem;
+      margin: 0.6rem 0 0;
+    }
+    p {
+      margin: 0.5rem 0;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.747);
+    }
+  }
+}
+@media screen and (max-width: 562px) {
+  .person-details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    h2 {
+      margin-top: 1rem;
+      font-size: 1.3rem;
+    }
+    p {
+      font-size: 1rem;
+    }
+    .person-img {
+      width: 200px;
+      height: 200px;
+      margin-right: 0;
+    }
+  }
+}
