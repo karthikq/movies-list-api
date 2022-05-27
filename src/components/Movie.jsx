@@ -9,9 +9,10 @@ import { useParams } from "react-router";
 import Ratings from "./Ratings";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
-
+import Backdrop from "@mui/material/Backdrop";
 import MoviesList from "./MoviesList";
 import { motion } from "framer-motion";
+import CircularProgress from "@mui/material/CircularProgress";
 
 export const Movie = () => {
   const [videos, setVideo] = useState([]);
@@ -20,6 +21,7 @@ export const Movie = () => {
   const [relatedMovies, setRealtedMovies] = useState([]);
   const [moviedata, setMData] = useState("");
   const [pageOffset, setPageOffset] = useState(false);
+  const [backDropState, setbackDropState] = useState(true);
 
   const { id } = useParams();
 
@@ -37,9 +39,11 @@ export const Movie = () => {
     axios
       .request(options)
       .then(function (response) {
-        console.log(response.data);
         setCast(response.data.cast);
         setCrew(response.data.crew);
+        setTimeout(() => {
+          setbackDropState(false);
+        }, 2500);
       })
       .catch(function (error) {
         console.error(error);
@@ -141,6 +145,12 @@ export const Movie = () => {
   };
   return (
     <motion.div className="movie-container">
+      <Backdrop
+        sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={backDropState}>
+        {" "}
+        <CircularProgress color="inherit" />
+      </Backdrop>
       <motion.div
         initial={{ y: 100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -149,19 +159,25 @@ export const Movie = () => {
         <div className="movie-contents-main">
           <h1>{moviedata.original_title}</h1>
           <div className="movie-trailer">
-            <Slider {...settings}>
-              {videos.map((video) => (
-                <iframe
-                  title="video"
-                  allowfullscreen="allowfullscreen"
-                  src={
-                    "https://www.youtube.com/embed/" +
-                    video.key +
-                    "?controls=1&showinfo=0&autohide=1&rel=0&"
-                  }
-                  frameborder="0"></iframe>
-              ))}
-            </Slider>
+            <React.Fragment>
+              <Slider {...settings}>
+                {videos.map((video) =>
+                  video ? (
+                    <iframe
+                      title="video"
+                      allowfullscreen="allowfullscreen"
+                      src={
+                        "https://www.youtube.com/embed/" +
+                        video.key +
+                        "?controls=1&showinfo=0&autohide=1&rel=0&"
+                      }
+                      frameborder="0"></iframe>
+                  ) : (
+                    "Loading"
+                  )
+                )}
+              </Slider>
+            </React.Fragment>
           </div>
           <div className="movie-revieves">
             <Ratings id={id} data={moviedata} />
