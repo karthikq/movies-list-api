@@ -19,7 +19,7 @@ const MoviesList = ({ results, state }) => {
             <div className="trending-img">
               <img
                 src={"https://image.tmdb.org/t/p/w185/" + result.poster_path}
-                alt=""
+                alt="ew"
               />
             </div>
             <div className="trending-text">
