@@ -112,11 +112,13 @@ const Trending = (props) => {
           <div className="trending-movies-list">
             <div className="trenidng-items">
               <h2>Top Rated Movies</h2>
-              <Pagination
-                className={classes.root}
-                count={results.total_pages}
-                defaultPage={1}
-                onChange={(e, value) => setTopratedPage(value)}></Pagination>
+              <div>
+                <Pagination
+                  className={classes.root}
+                  count={results.total_pages}
+                  defaultPage={1}
+                  onChange={(e, value) => setTopratedPage(value)}></Pagination>
+              </div>
             </div>
             <MoviesList results={toprated} />
           </div>

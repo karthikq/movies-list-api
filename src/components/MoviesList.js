@@ -4,13 +4,15 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { animateScroll as scroll } from "react-scroll";
 import { RiMovieLine } from "react-icons/ri";
+import SimpleBar from "simplebar-react";
+import "simplebar/dist/simplebar.min.css";
 
 const MoviesList = ({ results, state }) => {
   function handleScroll() {
     scroll.scrollTo(0);
   }
   return (
-    <div className="trending-flex">
+    <SimpleBar className="trending-flex">
       {results.results &&
         results.results.map((result) => (
           <div className="trending-movies-box">
@@ -34,18 +36,16 @@ const MoviesList = ({ results, state }) => {
                   </p>
                 </a>
               ) : (
-                <Link
-                  to={"/movie/" + result.id}
-                  style={{ textDecoration: "none" }}>
-                  <p className="black">
-                    Explore Now <RiMovieLine className="icon-movie" />
-                  </p>
-                </Link>
+                <p
+                  className="black"
+                  onClick={() => window.open("/movie/" + result.id, "_blank")}>
+                  Explore Now <RiMovieLine className="icon-movie" />
+                </p>
               )}
             </div>
           </div>
         ))}
-    </div>
+    </SimpleBar>
   );
 };
 

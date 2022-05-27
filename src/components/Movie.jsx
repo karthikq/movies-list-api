@@ -140,12 +140,12 @@ export const Movie = () => {
     adaptiveHeight: true,
   };
   return (
-    <motion.div
-      initial={{ y: 100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 2 }}
-      className="movie-container">
-      <div className="movie-contents">
+    <motion.div className="movie-container">
+      <motion.div
+        initial={{ y: 100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 1, ease: "anticipate" }}
+        className="movie-contents">
         <div className="movie-contents-main">
           <h1>{moviedata.original_title}</h1>
           <div className="movie-trailer">
@@ -167,35 +167,32 @@ export const Movie = () => {
             <Ratings id={id} data={moviedata} />
           </div>
         </div>
-        {pageOffset && (
-          <motion.div
-            initial={{ y: 100, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 2 }}
-            className="movie-cast">
-            <CastCrew cast={cast} h2={"Cast"} state={true} />
-          </motion.div>
-        )}
-        {pageOffset && (
-          <motion.div
-            initial={{ y: 100, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 2, delay: 1 }}
-            className="movie-crew">
-            <CastCrew cast={crew} h2={"Crew"} state={false} />
-          </motion.div>
-        )}
-        {pageOffset && (
-          <motion.div
-            initial={{ y: 100, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 2, delay: 2 }}
-            className="realted-movies">
-            <h2 className="rec">Recommended Movies</h2>
-            <MoviesList results={relatedMovies} state={true} />
-          </motion.div>
-        )}
-      </div>
+
+        <motion.div
+          initial={{ y: 100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 1 }}
+          className="movie-cast">
+          <CastCrew cast={cast} h2={"Cast"} state={true} />
+        </motion.div>
+
+        <motion.div
+          initial={{ y: 100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 1, delay: 0.2 }}
+          className="movie-crew">
+          <CastCrew cast={crew} h2={"Crew"} state={false} />
+        </motion.div>
+
+        <motion.div
+          initial={{ y: 100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 1, delay: 0.5 }}
+          className="realted-movies">
+          <h2 className="rec">Recommended Movies</h2>
+          <MoviesList results={relatedMovies} state={true} />
+        </motion.div>
+      </motion.div>
     </motion.div>
   );
 };

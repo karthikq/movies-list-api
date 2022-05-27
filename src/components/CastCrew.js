@@ -3,9 +3,11 @@
 import React from "react";
 
 import "@splidejs/splide/dist/css/themes/splide-skyblue.min.css";
-import Slider from "react-slick";
+ 
 import "slick-carousel/slick/slick.css";
 import { Link } from "react-router-dom";
+import SimpleBar from "simplebar-react";
+import "simplebar/dist/simplebar.min.css";
 
 const CastCrew = ({ cast, h2, state }) => {
   var settings = {
@@ -69,7 +71,7 @@ const CastCrew = ({ cast, h2, state }) => {
   return (
     <div className="movie-cast">
       <h2 clas="cast">{h2}</h2>
-      <Slider {...settings}>
+      <SimpleBar className="simplebar-main">
         {cast &&
           cast.map((items) => (
             <div className="movie-cast-img">
@@ -80,7 +82,7 @@ const CastCrew = ({ cast, h2, state }) => {
                     src={
                       "https://image.tmdb.org/t/p/w185/" + items.profile_path
                     }
-                    alt=""
+                    alt="err"
                   />
                 </Link>
               ) : (
@@ -103,7 +105,7 @@ const CastCrew = ({ cast, h2, state }) => {
               )}
             </div>
           ))}
-      </Slider>
+      </SimpleBar>
     </div>
   );
 };

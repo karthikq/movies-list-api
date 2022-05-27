@@ -72,9 +72,9 @@
   align-items: center;
   justify-content: center;
   .person-movies-img {
-    width: 220px;
-    height: 300px;
-    transition: all 0.5s ease-in-out;
+    width: 250px;
+    height: 290px;
+    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
     img {
       width: 100%;
       height: 100%;
@@ -82,7 +82,7 @@
     }
   }
   &:hover {
-    transform: scale(1.05);
+    transform: scale(1.02);
   }
   .movies-person-details {
     text-align: center;

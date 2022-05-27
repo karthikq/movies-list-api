@@ -6,6 +6,8 @@ import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { animateScroll as scroll } from "react-scroll";
 import Persondeatils from "./Persondeatils";
+import SimpleBar from "simplebar-react";
+import "simplebar/dist/simplebar.min.css";
 
 const Person = () => {
   const [movies, setMovies] = useState([]);
@@ -71,12 +73,12 @@ const Person = () => {
             <p>{details.birthday}</p>
           </div>
         </div>
-        <div className="person-movies">
+        <SimpleBar className="person-movies">
           <Persondeatils movies={movies} state={true} />
-        </div>
-        <div className="person-movies">
+        </SimpleBar>
+        <SimpleBar className="person-movies">
           <Persondeatils movies={crew} state={false} />
-        </div>
+        </SimpleBar>
       </div>
     </div>
   );

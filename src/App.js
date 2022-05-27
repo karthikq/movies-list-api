@@ -25,8 +25,7 @@ function App() {
   const fetchdata = () => {
     const options = {
       method: "GET",
-      url:
-        " https://api.themoviedb.org/3/movie/now_playing?api_key=5e6a88364748be068a42f3d6e03e3535&language=en-US&page=1",
+      url: " https://api.themoviedb.org/3/movie/now_playing?api_key=5e6a88364748be068a42f3d6e03e3535&language=en-US&page=1",
     };
 
     axios

@@ -5,6 +5,8 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/themes/splide-skyblue.min.css";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
+import SimpleBar from "simplebar-react";
+import "simplebar/dist/simplebar.min.css";
 
 const CastCrew = ({ movies }) => {
   var settings = {
